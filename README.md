@@ -1,7 +1,7 @@
 # Kubernetes deployment via Helm
 [![Build Status](https://travis-ci.com/Skeen/helm-bitwarden_rs.svg?branch=master)](https://travis-ci.com/Skeen/helm-bitwarden_rs)
 Helm chart to deploy a fully functional and secure [`bitwarden_rs`](https://github.com/dani-garcia/bitwarden_rs) application in [Kubernetes](https://kubernetes.io/).
-
+ 
 ## Requirements
 Requires a Kubernetes cluster setup, with dns, storage and [Helm and Tiller](https://docs.helm.sh/) configured.
 
