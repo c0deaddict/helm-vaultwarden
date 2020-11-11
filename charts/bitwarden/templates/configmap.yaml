@@ -8,7 +8,7 @@ metadata:
     helm.sh/chart: {{ include "bitwarden.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-data: 
+data:
   {{- range $key, $val := .Values.bitwarden }}
   {{ $key | upper }}: {{ $val | quote }}
   {{- end}}

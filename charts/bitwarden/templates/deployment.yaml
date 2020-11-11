@@ -31,6 +31,10 @@ spec:
         envFrom:
         - configMapRef:
             name: {{ $fullName }}-conf
+        {{- if .Values.secrets.name }}
+        - secretRef:
+            name: {{ .Values.secrets.name }}
+        {{- end }}
         ports:
         - name: http
           containerPort: {{ .Values.bitwarden.rocket_port }}

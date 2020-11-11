@@ -1,9 +1,11 @@
 apiVersion: v1
-appVersion: "1.16.1"
+appVersion: "1.17.0"
 description: A Helm chart to install bitwarden_rs
 name: bitwarden
-version: 0.2.0
+version: 0.2.1
 home: https://github.com/Skeen/helm-bitwarden_rs
 maintainers:
 - name: Skeen
   email: sovende@gmail.com
+- name: Jos van Bakel
+  email: jos@codeaddict.org
