@@ -5,10 +5,7 @@ fullnameOverride: ""
 # Bitwarden configuration.
 # The below values are used to construct a config map, which will be provided
 # to the bitwarden_rs container on start up.
-# For details about the options, see: https://github.com/dani-garcia/bitwarden_rs#configuring-bitwarden-service
-#
-# Besides the options listed below, Rocket can be further configured (though it shouldn't be required).
-# See: https://github.com/dani-garcia/bitwarden_rs#other-configuration
+# For details about the options, see: https://github.com/dani-garcia/bitwarden_rs/wiki
 bitwarden:
   # # Allow registration of new users
   # # See: https://github.com/dani-garcia/bitwarden_rs/wiki/Disable-registration-of-new-users
