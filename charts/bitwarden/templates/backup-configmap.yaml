@@ -1,21 +1,16 @@
-{{- if .Values.storage.enabled -}}
-{{- if .Values.backup.persistence.enabled -}}
+{{- if .Values.backup.enabled }}
 {{- $fullName := include "bitwarden.fullname" . -}}
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: ConfigMap
 metadata:
-  name: {{ $fullName }}-backup-pv
+  name: {{ $fullName }}-backup-config
   labels:
     app.kubernetes.io/name: {{ include "bitwarden.name" . }}
     helm.sh/chart: {{ include "bitwarden.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-spec:
-  accessModes:
-  - ReadWriteOnce
-  resources:
-    requests:
-      storage: {{ .Values.backup.persistence.size }}
-status: {}
-{{- end }}
+data:
+  {{- range $key, $val := .Values.backup.config }}
+  {{ $key | upper }}: {{ $val | quote }}
+  {{- end}}
 {{- end }}

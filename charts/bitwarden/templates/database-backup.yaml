@@ -12,12 +12,7 @@ metadata:
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
   schedule: {{ .Values.backup.schedule | quote }}
-  # Disallow concurrency if writing the same file
-  {{ if .Values.backup.timestamp -}}
-  concurrencyPolicy: Allow
-  {{ else }}
   concurrencyPolicy: Forbid
-  {{ end }}
   jobTemplate:
     spec:
       template:
@@ -26,27 +21,29 @@ spec:
           - name: {{ $fullName }}-database-backup
             image: "{{ .Values.backup.image.repository }}:{{ .Values.backup.image.tag }}"
             imagePullPolicy: {{ .Values.backup.image.pullPolicy }}
-            env:
-            - name: SOURCE_DATABASE
-              value: {{ .Values.storage.path}}/db.sqlite3
-            - name: BACKUP_DATABASE
-              value: {{ .Values.backup.path }}/backup.sqlite3
-            - name: TIMESTAMP_BACKUP
-              value: {{ .Values.backup.timestamp | quote}}
-            - name: TIMESTAMP_FILE
-              value: {{ .Values.backup.timestamp_file | quote}}
+            envFrom:
+              configMapRef:
+                name: {{ $fullName }}-backup-config
+              {{- if .Values.backup.secrets.name }}
+              secretRef:
+                name: {{ .Values.backup.secrets.name }}
+              {{- end }}
             volumeMounts:
             - mountPath: {{ .Values.storage.path }}
               name: data-storage
-            - mountPath: {{ .Values.backup.path }}
+            {{- if .Values.backup.persistence.enabled }}
+            - mountPath: {{ .Values.backup.persistence.path }}
               name: backup-storage
+            {{- end }}
           volumes:
           - name: data-storage
             persistentVolumeClaim:
               claimName: {{ $fullName }}-pv
+          {{- if .Values.backup.persistence.enabled }}
           - name: backup-storage
             persistentVolumeClaim:
               claimName: {{ $fullName }}-backup-pv
+          {{- end }}
           restartPolicy: OnFailure
           {{- with .Values.backup.resources }}
           resources:

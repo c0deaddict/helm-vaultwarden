@@ -119,23 +119,29 @@ storage:
   # The maximum size of the persisted data
   size: 100Mi
 
-
-# Settings regarding persistent backup storage
+# Settings regarding backup
 backup:
   # Whether backup is enabled or not
   enabled: true
-  # Where to store the backup data
-  path: "/bw-backup"
-  # The maximum size of the persisted backup data
-  size: 100Mi
+
+  persistence:
+    enabled: true
+    # Where to store the backup data
+    path: "/bw-backup"
+    # The maximum size of the persisted backup data
+    size: 5Gi
 
   # Cron schedule for the backup job (currently at 3:00 every night)
   schedule: "* 3 * * *"
 
-  # Name the backup backup.sqlite3[TIMESTAMP] instead of backup.sqlite3
-  timestamp: false
-  # Create a file containing the timestamp of the backup
-  timestamp_file: "/bw-backup/timestamp"
+  config:
+    source_database: "/bw-data/db.sqlite3"
+    backup_database: "/bw-data/backup.sqlite3"
+    timestamp_backup: false
+    timestamp_file: "/bw-backup/timestamp"
+
+  secrets:
+    name: null
 
   # Image used for backup run
   # See: https://github.com/Skeen/bitwarden_rs_backup
@@ -157,10 +163,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: nginx
     kubernetes.io/tls-acme: "true"
-    kubernetes.io/ssl-redirect: "true"
-    # # These annotations are needed for websocket.
-    # nginx.ingress.kubernetes.io/proxy-read-timeout: 3600
-    # nginx.ingress.kubernetes.io/proxy-send-timeout: 3600
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
   host: bitwarden.domain.tld
   tls:
     secretName: bitwarden-tls-secret
