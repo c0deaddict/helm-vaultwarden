@@ -3,6 +3,21 @@ entries:
   bitwarden:
   - apiVersion: v1
     appVersion: 1.17.0
+    created: "2020-11-11T10:45:44.143684093Z"
+    description: A Helm chart to install bitwarden_rs
+    digest: ed75145ec6c0bbb4f32c2c9526e43812a1b007962c423be3408fda3f535cd25b
+    home: https://github.com/Skeen/helm-bitwarden_rs
+    maintainers:
+    - email: sovende@gmail.com
+      name: Skeen
+    - email: jos@codeaddict.org
+      name: Jos van Bakel
+    name: bitwarden
+    urls:
+    - https://github.com/c0deaddict/helm-bitwarden_rs/releases/download/bitwarden-0.2.2/bitwarden-0.2.2.tgz
+    version: 0.2.2
+  - apiVersion: v1
+    appVersion: 1.17.0
     created: "2020-11-11T10:11:13.590382123Z"
     description: A Helm chart to install bitwarden_rs
     digest: 31294ccefcd9c13ca10c3daf91899d8aca8145acb029e0f43ef33edc2ffb5f13
