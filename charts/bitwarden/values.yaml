@@ -149,7 +149,7 @@ backup:
     repository: skeen/bitwarden_rs_backup
     tag: latest
     pullPolicy: Always
-    pullSecrets: {}
+    pullSecrets: []
 
   # Resources, etc, for the backup pod(s)
   resources: {}
