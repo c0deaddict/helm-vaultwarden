@@ -39,6 +39,11 @@ spec:
         - name: http
           containerPort: {{ .Values.bitwarden.rocket_port }}
           protocol: TCP
+        {{- if .Values.bitwarden.websocket_enabled }}
+        - name: websocket
+          containerPort: {{ .Values.bitwarden.websocket_port }}
+          protocol: TCP
+        {{- end }}
         livenessProbe:
           httpGet:
             path: /
