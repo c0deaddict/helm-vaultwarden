@@ -22,7 +22,7 @@ bitwarden:
   # # Websocket support for notifications
   # # See: https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-WebSocket-notifications
   websocket_enabled: false
-  # websocket_port: 3012
+  websocket_port: 3012
 
   # # Needed for U2F authentification
   # # See: https://github.com/dani-garcia/bitwarden_rs/wiki/Enabling-WebSocket-notifications

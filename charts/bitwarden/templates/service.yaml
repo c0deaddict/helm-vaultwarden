@@ -15,6 +15,12 @@ spec:
       targetPort: {{ .Values.service.target_port }}
       protocol: TCP
       name: http
+    {{- if .Values.bitwarden.websocket_enabled }}
+    - port: {{ .Values.bitwarden.websocket_port }}
+      targetPort: {{ .Values.bitwarden.websocket_port }}
+      protocol: TCP
+      name: bitwarden
+    {{- end }}
   selector:
     app.kubernetes.io/name: {{ include "bitwarden.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
