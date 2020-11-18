@@ -22,10 +22,10 @@ spec:
             image: "{{ .Values.backup.image.repository }}:{{ .Values.backup.image.tag }}"
             imagePullPolicy: {{ .Values.backup.image.pullPolicy }}
             envFrom:
-              configMapRef:
+            - configMapRef:
                 name: {{ $fullName }}-backup-config
               {{- if .Values.backup.secrets.name }}
-              secretRef:
+            - secretRef:
                 name: {{ .Values.backup.secrets.name }}
               {{- end }}
             volumeMounts:
