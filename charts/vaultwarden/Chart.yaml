@@ -2,7 +2,7 @@ apiVersion: v1
 appVersion: 1.21.0
 description: A Helm chart to install vaultwarden
 name: vaultwarden
-version: 0.5.0
+version: 0.5.1
 home: https://github.com/c0deaddict/helm-vaultwarden
 maintainers:
 - name: Skeen
