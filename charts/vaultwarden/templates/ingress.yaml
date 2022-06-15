@@ -46,7 +46,6 @@ spec:
               serviceName: {{ $fullName }}
               servicePort: http
               {{- end }}
-          {{- end }}
           {{- if $webSocketEnabled }}
           - path: /notifications/hub
             pathType: ImplementationSpecific
