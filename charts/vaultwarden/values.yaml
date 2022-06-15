@@ -102,6 +102,8 @@ storage:
   enabled: true
   # Where to store persistent data
   path: "/bw-data"
+  # Which storage class to use for persistent data
+  storageClassName: default
   # The maximum size of the persisted data
   size: 100Mi
 
@@ -112,6 +114,8 @@ backup:
   enabled: false
   # Where to store the backup data
   path: "/bw-backup"
+  # Which storage class to use for backup data
+  storageClassName: default
   # The maximum size of the persisted backup data
   size: 100Mi
 
