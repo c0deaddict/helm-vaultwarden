@@ -1,11 +1,11 @@
-{{- $fullName := include "bitwarden.fullname" . -}}
+{{- $fullName := include "vaultwarden.fullname" . -}}
 apiVersion: v1
 kind: Service
 metadata:
   name: {{ $fullName }}
   labels:
-    app.kubernetes.io/name: {{ include "bitwarden.name" . }}
-    helm.sh/chart: {{ include "bitwarden.chart" . }}
+    app.kubernetes.io/name: {{ include "vaultwarden.name" . }}
+    helm.sh/chart: {{ include "vaultwarden.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
@@ -15,12 +15,12 @@ spec:
       targetPort: {{ .Values.service.target_port }}
       protocol: TCP
       name: http
-    {{- if .Values.bitwarden.websocket_enabled }}
-    - port: {{ .Values.bitwarden.websocket_port }}
-      targetPort: {{ .Values.bitwarden.websocket_port }}
+    {{- if .Values.vaultwarden.websocket_enabled }}
+    - port: {{ .Values.vaultwarden.websocket_port }}
+      targetPort: {{ .Values.vaultwarden.websocket_port }}
       protocol: TCP
       name: ws
     {{- end }}
   selector:
-    app.kubernetes.io/name: {{ include "bitwarden.name" . }}
+    app.kubernetes.io/name: {{ include "vaultwarden.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

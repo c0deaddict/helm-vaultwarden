@@ -1,13 +1,12 @@
 {{- if .Values.storage.enabled -}}
-{{- if .Values.backup.enabled -}}
-{{- $fullName := include "bitwarden.fullname" . -}}
+{{- $fullName := include "vaultwarden.fullname" . -}}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: {{ $fullName }}-backup-pv
+  name: {{ $fullName }}-pv
   labels:
-    app.kubernetes.io/name: {{ include "bitwarden.name" . }}
-    helm.sh/chart: {{ include "bitwarden.chart" . }}
+    app.kubernetes.io/name: {{ include "vaultwarden.name" . }}
+    helm.sh/chart: {{ include "vaultwarden.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
 spec:
@@ -15,7 +14,6 @@ spec:
   - ReadWriteOnce
   resources:
     requests:
-      storage: {{ .Values.backup.size }}
+      storage: {{ .Values.storage.size }}
 status: {}
-{{- end }}
 {{- end }}

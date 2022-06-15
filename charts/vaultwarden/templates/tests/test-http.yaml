@@ -1,4 +1,4 @@
-{{- $fullName := include "bitwarden.fullname" . -}}
+{{- $fullName := include "vaultwarden.fullname" . -}}
 apiVersion: v1
 kind: Pod
 metadata:

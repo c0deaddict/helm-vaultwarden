@@ -1,15 +1,16 @@
-{{- $fullName := include "bitwarden.fullname" . -}}
+{{- $fullName := include "vaultwarden.fullname" . -}}
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ $fullName }}-conf
   labels:
-    app.kubernetes.io/name: {{ include "bitwarden.name" . }}
-    helm.sh/chart: {{ include "bitwarden.chart" . }}
+    app.kubernetes.io/name: {{ include "vaultwarden.name" . }}
+    helm.sh/chart: {{ include "vaultwarden.chart" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
-data: 
-  {{- range $key, $val := .Values.bitwarden }}
+data:
+  DOMAIN: http{{ if .Values.ingress.tls }}s{{ end }}://{{ .Values.ingress.domain }}
+  {{- range $key, $val := .Values.vaultwarden }}
   {{ $key | upper }}: {{ $val | quote }}
   {{- end}}
   {{ if .Values.storage.enabled -}}
