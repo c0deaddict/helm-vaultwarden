@@ -18,6 +18,11 @@ helm init --wait
 ```
 
 ## Usage
+Install the helm repository:
+```
+helm repo add vaultwarden https://c0deaddict.github.io/helm-vaultwarden/
+```
+
 The minimal deployment using all default values;
 ```
 helm install --wait --set "ingress.domain=bitwarden.yourdomain.com" .
