@@ -69,7 +69,7 @@ deployment:
   # See: https://www.github.com/dani-garcia/vaultwarden
   image:
     repository: vaultwarden/server
-    tag: 1.25.0
+    tag: "" # defaults to appVersion
     pullPolicy: IfNotPresent
   # Resources, etc, for the deployment pod
   resources: {}
