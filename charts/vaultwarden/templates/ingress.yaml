@@ -2,7 +2,6 @@
 {{- $fullName := include "vaultwarden.fullname" . -}}
 {{- $ingressPaths := .Values.ingress.paths -}}
 {{- $newNetworkingAPI := .Capabilities.APIVersions.Has "networking.k8s.io/v1" }}
-{{- $webSocketEnabled := .Values.vaultwarden.websocket_enabled }}
 {{- if $newNetworkingAPI }}
 apiVersion: networking.k8s.io/v1
 {{- else }}
@@ -46,30 +45,4 @@ spec:
               serviceName: {{ $fullName }}
               servicePort: http
               {{- end }}
-          {{- if $webSocketEnabled }}
-          - path: /notifications/hub
-            pathType: ImplementationSpecific
-            backend:
-              {{- if $newNetworkingAPI }}
-              service:
-                name: {{ $fullName }}
-                port:
-                  name: ws
-              {{- else }}
-              serviceName: {{ $fullName }}
-              servicePort: ws
-              {{- end }}
-          - path: /notifications/hub/negotiate
-            pathType: ImplementationSpecific
-            backend:
-              {{- if $newNetworkingAPI }}
-              service:
-                name: {{ $fullName }}
-                port:
-                  name: http
-              {{- else }}
-              serviceName: {{ $fullName }}
-              servicePort: http
-              {{- end }}
-          {{- end }}
 {{- end }}

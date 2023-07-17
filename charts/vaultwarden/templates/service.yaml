@@ -15,12 +15,6 @@ spec:
       targetPort: {{ .Values.service.target_port }}
       protocol: TCP
       name: http
-    {{- if .Values.vaultwarden.websocket_enabled }}
-    - port: {{ .Values.vaultwarden.websocket_port }}
-      targetPort: {{ .Values.vaultwarden.websocket_port }}
-      protocol: TCP
-      name: ws
-    {{- end }}
   selector:
     app.kubernetes.io/name: {{ include "vaultwarden.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

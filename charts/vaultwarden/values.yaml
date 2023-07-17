@@ -15,11 +15,6 @@ vaultwarden:
   # # See: https://github.com/dani-garcia/vaultwarden/wiki/Disable-invitations
   # invitations_allowed: true
 
-  # # Websocket support for notifications
-  # # See: https://github.com/dani-garcia/vaultwarden/wiki/Enabling-WebSocket-notifications
-  websocket_enabled: true
-  websocket_port: 3012
-
   # # Needed for U2F authentification
   # # See: https://github.com/dani-garcia/vaultwarden/wiki/Enabling-U2F-%28and-FIDO2-WebAuthn%29-authentication
   # # Configuration of YubiKey OTP

@@ -41,11 +41,6 @@ spec:
         - name: http
           containerPort: {{ .Values.vaultwarden.rocket_port }}
           protocol: TCP
-        {{- if .Values.vaultwarden.websocket_enabled }}
-        - name: ws
-          containerPort: {{ .Values.vaultwarden.websocket_port }}
-          protocol: TCP
-        {{- end }}
         livenessProbe:
           httpGet:
             path: /
