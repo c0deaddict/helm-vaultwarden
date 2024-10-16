@@ -2,6 +2,21 @@ apiVersion: v1
 entries:
   vaultwarden:
   - apiVersion: v1
+    appVersion: 1.32.2
+    created: "2024-10-16T09:03:30.212100328Z"
+    description: A Helm chart to install vaultwarden
+    digest: a95e9d574ea3480b140e6f65df3e3c16c4406b5a236827997fad835effbdfa9a
+    home: https://github.com/c0deaddict/helm-vaultwarden
+    maintainers:
+    - email: sovende@gmail.com
+      name: Skeen
+    - email: jos@codeaddict.org
+      name: Jos van Bakel
+    name: vaultwarden
+    urls:
+    - https://github.com/c0deaddict/helm-vaultwarden/releases/download/vaultwarden-1.32.2/vaultwarden-1.32.2.tgz
+    version: 1.32.2
+  - apiVersion: v1
     appVersion: 1.30.5
     created: "2024-04-10T08:37:14.663324907Z"
     description: A Helm chart to install vaultwarden
@@ -226,4 +241,4 @@ entries:
     urls:
     - https://github.com/c0deaddict/helm-vaultwarden/releases/download/vaultwarden-0.5.0/vaultwarden-0.5.0.tgz
     version: 0.5.0
-generated: "2024-04-10T08:37:14.663452877Z"
+generated: "2024-10-16T09:03:30.21221357Z"
